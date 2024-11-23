@@ -42,6 +42,8 @@ export default async function handler(req: any, res: any) {
     server.server.emit("request", req, res);
   } catch (err) {
     server.log.error(err);
-    res.status(500).send({ error: "An unexpected error occurred" });
+    res.statusCode = 500; // Set HTTP status code
+    res.setHeader("Content-Type", "application/json"); // Set content type
+    res.end(JSON.stringify({ error: "An unexpected error occurred" })); // Send the response as JSON
   }
 }
