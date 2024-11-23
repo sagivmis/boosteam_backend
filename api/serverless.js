@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 import Fastify from "fastify";
+import path from "path";
 
 const app = Fastify({
   logger: true,
