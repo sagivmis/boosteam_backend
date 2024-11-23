@@ -1,6 +1,6 @@
 import fastify from "fastify";
 import mongoose from "mongoose";
-import authRoutes from "./routes/auth";
+import authRoutes from "../src/routes/auth";
 import cors from "@fastify/cors";
 
 export const server = fastify({ logger: true });

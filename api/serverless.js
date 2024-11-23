@@ -1,20 +1,17 @@
 import * as dotenv from "dotenv";
+import server from "./server";
+
 dotenv.config();
 
 import Fastify from "fastify";
-import path from "path";
 
 const app = Fastify({
   logger: true,
 });
 
 // Asynchronously import the server file and register the routes
-const serverPath = path.join(__dirname, "../public/server.js");
 
-app.register(async () => {
-  const serverModule = await import(serverPath);
-  app.register(serverModule.default);
-});
+app.register(server);
 
 export default async (req, res) => {
   try {
