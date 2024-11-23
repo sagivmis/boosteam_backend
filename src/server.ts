@@ -38,6 +38,7 @@ server.register(authRoutes);
 export default async function handler(req: any, res: any) {
   try {
     await server.ready();
+    console.log("Request Headers:", req.headers);
     server.server.emit("request", req, res);
   } catch (err) {
     server.log.error(err);
