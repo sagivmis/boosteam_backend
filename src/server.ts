@@ -7,7 +7,7 @@ export const server = fastify({ logger: true });
 const PORT = 3000;
 // Enable CORS
 server.register(cors, {
-  origin: "http://localhost:5173", // This will allow requests from any origin. You can replace '*' with your frontend's URL, e.g., 'http://localhost:3001'
+  origin: "*", // This will allow requests from any origin. You can replace '*' with your frontend's URL, e.g., 'http://localhost:3001'
   methods: ["GET", "POST", "PUT", "DELETE"],
 });
 
@@ -36,6 +36,11 @@ server.register(authRoutes);
 // });
 
 export default async function handler(req: any, res: any) {
-  await server.ready();
-  server.server.emit("request", req, res);
+  try {
+    await server.ready();
+    server.server.emit("request", req, res);
+  } catch (err) {
+    server.log.error(err);
+    res.status(500).send({ error: "An unexpected error occurred" });
+  }
 }
