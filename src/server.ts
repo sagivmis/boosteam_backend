@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/auth";
 import cors from "@fastify/cors";
 
-const server = fastify({ logger: true });
+export const server = fastify({ logger: true });
 const PORT = 3000;
 // Enable CORS
 server.register(cors, {
