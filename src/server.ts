@@ -27,13 +27,13 @@ mongoose
 server.register(authRoutes);
 
 // Start server
-server.listen({ port: PORT }, (err, address) => {
-  if (err) {
-    server.log.error(err);
-    process.exit(1);
-  }
-  console.log(`Server listening at ${address}`);
-});
+// server.listen({ port: PORT }, (err, address) => {
+//   if (err) {
+//     server.log.error(err);
+//     process.exit(1);
+//   }
+//   console.log(`Server listening at ${address}`);
+// });
 
 export default async function handler(req: any, res: any) {
   await server.ready();
