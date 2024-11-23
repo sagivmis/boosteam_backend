@@ -8,8 +8,10 @@ const app = Fastify({
 });
 
 // Asynchronously import the server file and register the routes
+const serverPath = path.join(__dirname, "../public/server.js");
+
 app.register(async () => {
-  const serverModule = await import("../public/server.js");
+  const serverModule = await import(serverPath);
   app.register(serverModule.default);
 });
 

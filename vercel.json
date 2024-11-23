@@ -4,6 +4,10 @@
     {
       "src": "api/serverless.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "public/server.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
