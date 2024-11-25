@@ -4,7 +4,9 @@ import authRoutes from "../src/routes/auth";
 import cors from "@fastify/cors";
 
 export const server = fastify({ logger: true });
+
 const PORT = 3000;
+
 // Enable CORS
 server.register(cors, {
   origin: "*", // This will allow requests from any origin. You can replace '*' with your frontend's URL, e.g., 'http://localhost:3001'
@@ -42,7 +44,6 @@ export default async function handler(req: any, res: any) {
     server.server.emit("request", req, res);
   } catch (err) {
     server.log.error(err);
-    console.log(res.status);
-    res.status(500).json({ error: "An unexpected error occurred" });
+    res.status(500).send({ error: "An unexpected error occurred" });
   }
 }

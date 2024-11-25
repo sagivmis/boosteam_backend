@@ -7,6 +7,11 @@ import { FReply, ErrorReply, type TeamPlayer } from "../util";
 const SECRET_KEY = "your_secret_key";
 
 async function authRoutes(fastify: FastifyInstance) {
+  // route
+  fastify.get("/", async (req, res) => {
+    return res.status(200).type("text/html").send({ boosteam: "welcome" });
+  });
+
   // Register User
   fastify.post<{ Reply: FReply }>(
     "/register",

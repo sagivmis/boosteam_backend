@@ -24,7 +24,8 @@ export default async (req, res) => {
     app.server.emit("request", req, res);
   } catch (err) {
     app.log.error(err);
-    console.log(res.status);
-    res.status(500).json({ error: "An unexpected error occurred" });
+    res.statusCode = 500;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ error: "An unexpected error occurred" }));
   }
 };
