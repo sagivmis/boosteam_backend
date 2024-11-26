@@ -9,6 +9,6 @@
     "noImplicitAny": false,
     "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["src/**/*.ts", "api/server.ts"],
+  "include": ["src/**/*.ts", "api/*"],
   "exclude": ["node_modules"]
 }

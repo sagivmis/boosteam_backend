@@ -1,6 +1,6 @@
 import fastify from "fastify";
 import mongoose from "mongoose";
-import authRoutes from "../src/routes/auth";
+import authRoutes from "./routes/auth";
 import cors from "@fastify/cors";
 
 export const server = fastify({ logger: true });
@@ -29,21 +29,26 @@ mongoose
 server.register(authRoutes);
 
 // Start server
-server.listen({ port: PORT }, (err, address) => {
-  if (err) {
-    server.log.error(err);
-    process.exit(1);
-  }
-  console.log(`Server listening at ${address}`);
+// server.listen({ port: PORT }, (err, address) => {
+//   if (err) {
+//     server.log.error(err);
+//     process.exit(1);
+//   }
+//   console.log(`Server listening at ${address}`);
+// });
+
+// root
+server.get("/", async (req, res) => {
+  return res.status(200).type("text/html").send({ boosteam: "welcome" });
 });
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: any, reply: any) {
   try {
     await server.ready();
     console.log("Request Headers:", req.headers);
-    server.server.emit("request", req, res);
+    server.server.emit("request", req, reply);
   } catch (err) {
     server.log.error(err);
-    res.status(500).send({ error: "An unexpected error occurred" });
+    reply.send({ error: "An unexpected error occurred" });
   }
 }
