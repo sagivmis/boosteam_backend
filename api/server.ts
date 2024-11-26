@@ -39,7 +39,7 @@ server.register(authRoutes);
 
 // root
 server.get("/", async (req, res) => {
-  return res.status(200).type("text/html").send({ boosteam: "welcome" });
+  return res.status(200).send({ boosteam: "welcome" });
 });
 
 export default async function handler(req: any, reply: any) {
@@ -49,6 +49,6 @@ export default async function handler(req: any, reply: any) {
     server.server.emit("request", req, reply);
   } catch (err) {
     server.log.error(err);
-    reply.send({ error: "An unexpected error occurred" });
+    reply.status(504).send({ error: "An unexpected error occurred" });
   }
 }
