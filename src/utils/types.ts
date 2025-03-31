@@ -31,7 +31,7 @@ export type SuccessReply = {
   teams?: Record<number, TeamPlayer[]>;
   settings?: any;
   username?: string;
-  user?: IUser
+  user?: IUser;
 };
 
 export type ErrorReply = {
