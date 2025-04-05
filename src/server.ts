@@ -33,7 +33,7 @@ server.register(helmet);
 
 // CORS configuration
 server.register(cors, {
-  origin: CORS_ORIGIN,
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
