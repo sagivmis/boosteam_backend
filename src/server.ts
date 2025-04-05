@@ -1,7 +1,6 @@
 import fastify from "fastify";
 import mongoose from "mongoose";
 import cors from "@fastify/cors";
-import helmet from "@fastify/helmet";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth";
 import teamRoutes from "./routes/team";
@@ -25,9 +24,6 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/boossteam";
 const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:3001";
-
-// Security headers
-server.register(helmet);
 
 // CORS configuration
 server.register(cors, {
