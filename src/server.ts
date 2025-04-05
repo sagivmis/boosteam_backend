@@ -31,7 +31,7 @@ server.register(helmet);
 
 // CORS configuration
 server.register(cors, {
-  origin: "*",
+  origin: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 });
 
