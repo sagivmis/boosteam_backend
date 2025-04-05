@@ -104,9 +104,7 @@ async function authRoutes(fastify: FastifyInstance) {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ userId: user._id }, SECRET_KEY, {
-          expiresIn: TOKEN_EXPIRY,
-        });
+        const token = jwt.sign({ userId: user._id }, SECRET_KEY);
 
         // Update last login time
         await User.findByIdAndUpdate(user._id, { lastLogin: new Date() });
