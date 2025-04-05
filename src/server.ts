@@ -26,8 +26,6 @@ const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/boossteam";
 const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:3001";
 
-console.log(CORS_ORIGIN);
-
 // Security headers
 server.register(helmet);
 
@@ -35,8 +33,6 @@ server.register(helmet);
 server.register(cors, {
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
 });
 
 // Database connection
