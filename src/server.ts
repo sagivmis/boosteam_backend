@@ -61,15 +61,13 @@ server.get("/api", async (req, res) => {
 });
 
 // Start server
-if (require.main === module) {
-  server.listen({ port: PORT, host: "0.0.0.0" }, (err, address) => {
-    if (err) {
-      server.log.error(err);
-      process.exit(1);
-    }
-    console.log(`Server listening at ${address}`);
-  });
-}
+server.listen({ port: PORT, host: "0.0.0.0" }, (err, address) => {
+  if (err) {
+    server.log.error(err);
+    process.exit(1);
+  }
+  console.log(`Server listening at ${address}`);
+});
 
 // For serverless environments
 export default async function handler(req: any, reply: any) {
